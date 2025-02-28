@@ -29,7 +29,8 @@ function SnakeGame() {
     ) {
       setbodysize(bodysize + 1);
     } else {
-      document.querySelector(".food").classList.add("scaleUp");
+      document.querySelector(".food").classList.toggle("scaleUp");
+      document.querySelector(".game").classList.add("rotation");
     }
   }
   const Food = () => {
