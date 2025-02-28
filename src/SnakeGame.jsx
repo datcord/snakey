@@ -6,6 +6,7 @@ import headImg from "./assets/head.png";
 import foodImg from "./assets/icon-192.png";
 
 function SnakeGame() {
+  const snakediv = document.querySelector("snake");
   const [bodysize, setbodysize] = useState(3);
   const body = Array(bodysize).fill(bodyImg);
   var i = 0;
@@ -21,19 +22,26 @@ function SnakeGame() {
     );
   };
 
+  function handleAnimationEnd() {
+    if (
+      document.querySelector(".snake").clientHeight <=
+      window.innerHeight - 90
+    ) {
+      setbodysize(bodysize + 1);
+    }
+  }
   const Food = () => {
     return <img className="food" src={foodImg} alt="f" />;
   };
   return (
     <div
       onAnimationEnd={() => {
-        if (bodysize <= window.innerHeight) {
-          setbodysize(bodysize + 1);
-        }
+        handleAnimationEnd();
       }}
       className="game"
     >
       <Snake />
+      <Food />
     </div>
   );
 }

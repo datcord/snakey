@@ -26,3 +26,30 @@
     transform: translateY(10px);
   }
 }
+.food {
+  width: 3rem;
+  height: auto;
+  position: fixed;
+  bottom: 0.5rem;
+  left: 0.5rem;
+}
+.scaleUp {
+  animation: scalemax 3s linear;
+}
+@keyframes scalemax {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(2);
+  }
+  75% {
+    transform: scale(2.5);
+  }
+  100% {
+    transform: scale(3);
+  }
+}
