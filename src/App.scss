@@ -1,4 +1,28 @@
 .game {
+  z-index: -10;
   width: 100dvw;
   height: 100dvh;
+}
+.bodypart,
+.head {
+  position: relative;
+  width: 3rem;
+  height: auto;
+  rotate: 90deg;
+}
+.snake {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  &:active {
+    animation: move 0.2s linear;
+  }
+}
+
+@keyframes move {
+  0%,
+  50%,
+  100% {
+    transform: translateY(10px);
+  }
 }
