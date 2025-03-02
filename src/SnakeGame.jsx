@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import "./App.css";
+import "./SnakeGame.css";
 import bodyImg from "./assets/body.png";
 import headImg from "./assets/head.png";
 import foodImg from "./assets/icon-192.png";
@@ -29,8 +29,13 @@ function SnakeGame() {
     ) {
       setbodysize(bodysize + 1);
     } else {
-      document.querySelector(".food").classList.toggle("scaleUp");
+      document.querySelector(".food").classList.add("scaleUp");
       document.querySelector(".game").classList.add("rotation");
+      setTimeout(() => {
+        setbodysize(3);
+        document.querySelector(".food").classList.remove("scaleUp");
+        document.querySelector(".game").classList.remove("rotation");
+      }, 3000);
     }
   }
   const Food = () => {

@@ -20,9 +20,7 @@
   align-self: center;
   display: flex;
   flex-direction: column;
-}
-.snake:active {
-  animation: move 0.2s linear;
+  animation: move 0.5s linear;
 }
 
 @keyframes move {
@@ -76,4 +74,4 @@
   100% {
     background-position-y: center;
   }
-}/*# sourceMappingURL=App.css.map */
+}/*# sourceMappingURL=SnakeGame.css.map */
