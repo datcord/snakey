@@ -6,7 +6,9 @@ import headImg from "./assets/head.png";
 import foodImg from "./assets/icon-192.png";
 
 function SnakeGame() {
-  const [direction, setDirection] = useState("down");
+  const food = document.querySelector(".food");
+  const background = document.querySelector(".game");
+  const [direction, setDirection] = useState(true); //true ~> down, false ~> up
   const [bodysize, setbodysize] = useState(3);
   const body = Array(bodysize).fill(bodyImg);
   var i = 0;
@@ -26,15 +28,15 @@ function SnakeGame() {
     if (
       document.querySelector(".snake").clientHeight <=
         window.innerHeight - 90 &&
-      direction === "down"
+      direction
     ) {
       setbodysize(bodysize + 1);
-    } else if (direction === "up" && bodysize > 3) {
+    } else if (!direction && bodysize > 3) {
       setbodysize(bodysize - 1);
     } else {
-      document.querySelector(".food").classList.add("scaleUp");
-      document.querySelector(".game").classList.add("rotation");
-      setDirection("up");
+      food.classList.toggle("scaleUp");
+      background.classList.toggle("rotation");
+      setDirection(!direction);
     }
   }
   const Food = () => {

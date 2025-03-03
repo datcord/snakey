@@ -61,15 +61,31 @@
 }
 @keyframes rotateBack {
   0% {
-    background-position-y: center;
+    background-position-x: center;
   }
   35% {
-    background-position-y: bottom;
+    background-position-x: left;
   }
   80% {
-    background-position-y: top;
+    background-position-x: right;
   }
   100% {
-    background-position-y: center;
+    background-position-x: center;
+  }
+}
+@media (max-width: 1024px) {
+  @keyframes rotateBack {
+    0% {
+      background-position-y: center;
+    }
+    35% {
+      background-position-y: bottom;
+    }
+    80% {
+      background-position-y: top;
+    }
+    100% {
+      background-position-y: center;
+    }
   }
 }
