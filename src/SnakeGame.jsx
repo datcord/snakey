@@ -39,9 +39,6 @@ function SnakeGame() {
       setDirection(!direction);
     }
   }
-  const Food = () => {
-    return <img className="food" src={foodImg} alt="f" />;
-  };
   return (
     <div
       onAnimationEnd={() => {
@@ -50,7 +47,7 @@ function SnakeGame() {
       className="game"
     >
       <Snake />
-      <Food />
+      <img className="food" src={foodImg} alt="f" />
     </div>
   );
 }
