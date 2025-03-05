@@ -6,8 +6,9 @@ import headImg from "./assets/head.png";
 import foodImg from "./assets/icon-192.png";
 
 function SnakeGame() {
+  var randomX, randomY;
   const food = document.querySelector(".food");
-  const background = document.querySelector(".game");
+  const [pauseAnim, setPauseAnim] = useState(false);
   const [direction, setDirection] = useState(true); //true ~> down, false ~> up
   const [bodysize, setbodysize] = useState(3);
   const body = Array(bodysize).fill(bodyImg);
@@ -25,17 +26,32 @@ function SnakeGame() {
   };
 
   function handleAnimationEnd() {
+    if (pauseAnim) {
+      return;
+    }
     if (
       document.querySelector(".snake").clientHeight <=
         window.innerHeight - 90 &&
       direction
     ) {
       setbodysize(bodysize + 1);
+      document.querySelector(
+        ".game"
+      ).style.backgroundPosition = `bottom 0.5rem left 0.5rem`;
     } else if (!direction && bodysize > 3) {
+      randomX = Math.floor(Math.random() * 100) - 1;
+      randomY = Math.floor(Math.random() * 100) - 1;
+      document.querySelector(
+        ".game"
+      ).style.backgroundPosition = `${randomY}% ${randomX}%`;
       setbodysize(bodysize - 1);
     } else {
-      food.classList.toggle("scaleUp");
-      background.classList.toggle("rotation");
+      food.classList.toggle("scaleDown");
+      randomX = Math.floor(Math.random() * 100) - 1;
+      randomY = Math.floor(Math.random() * 100) - 1;
+      document.querySelector(
+        ".game"
+      ).style.backgroundPosition = `${randomY}% ${randomX}%`;
       setDirection(!direction);
     }
   }
@@ -47,7 +63,12 @@ function SnakeGame() {
       className="game"
     >
       <Snake />
-      <img className="food" src={foodImg} alt="f" />
+      <img
+        className="food"
+        src={foodImg}
+        alt="f"
+        onClick={() => setPauseAnim(!pauseAnim)}
+      />
     </div>
   );
 }

@@ -1,11 +1,15 @@
+@use "sass:math";
 .game {
   background-image: url(./assets/icon-192.png);
   background-repeat: no-repeat;
-  background-size: auto;
-  background-position: center;
-  z-index: -10;
-  width: 100dvw;
-  height: 100dvh;
+  background-size: 3rem auto;
+  background-position: 0.5rem 0.5rem;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 1;
+  transition: all 0.6s ease;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 .bodypart,
 .head {
@@ -13,19 +17,22 @@
   width: 3rem;
   height: auto;
   rotate: 90deg;
+  opacity: 0.5;
 }
 .snake {
   align-self: center;
   display: flex;
   flex-direction: column;
-  animation: move 0.5s linear;
+  animation: move 0.8s ease;
 }
 
 @keyframes move {
   0%,
-  50%,
+  50% {
+    transform: translateY(5px);
+  }
   100% {
-    transform: translateY(10px);
+    transform: translateY(5px);
   }
 }
 .food {
@@ -34,58 +41,23 @@
   position: fixed;
   bottom: 0.5rem;
   left: 0.5rem;
+  transition: all 1s ease;
+  z-index: 3;
 }
-.scaleUp {
-  animation: scalemax 3s ease;
+.scaleDown {
+  animation: scalemin 3s ease;
 }
-@keyframes scalemax {
+@keyframes scalemin {
   0% {
     width: 3rem;
     transform: rotate(0deg);
-    text-shadow: 0px 1px 2px #00ff00;
   }
   50% {
-    width: 5rem;
+    width: 1rem;
     transform: rotate(360deg);
-    text-shadow: 0px 3px 2px #00ff00;
   }
   100% {
     width: 3rem;
     transform: rotate(0deg);
-    text-shadow: 0px 1px 2px #00ff00;
-  }
-}
-
-.rotation {
-  animation: rotateBack 3s ease;
-}
-@keyframes rotateBack {
-  0% {
-    background-position-x: center;
-  }
-  35% {
-    background-position-x: left;
-  }
-  80% {
-    background-position-x: right;
-  }
-  100% {
-    background-position-x: center;
-  }
-}
-@media (max-width: 1024px) {
-  @keyframes rotateBack {
-    0% {
-      background-position-y: center;
-    }
-    35% {
-      background-position-y: bottom;
-    }
-    80% {
-      background-position-y: top;
-    }
-    100% {
-      background-position-y: center;
-    }
   }
 }
